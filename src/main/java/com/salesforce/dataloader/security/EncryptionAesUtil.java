@@ -172,7 +172,16 @@ public class EncryptionAesUtil {
     public void resetCipherKey() {
         cipherKey = null;
     }
-
+    /**
+    (TODO) 
+    fileinput stream doenst like Windows Path and Linux Path at the same time 
+    try using 
+    * File homedir = new File(System.getProperty("user.home"));
+    * File fileToRead = new File(homedir, "java/ex.txt");
+    Linux Syntax: /home/joe/foo
+    Windows Syntax: C:\home\joe\foo
+    Try swapping out the "/" in the path for either System.getProperty("file.separator")    
+    **/
     public void setCipherKeyFromFilePath(String filePath) throws GeneralSecurityException {
         byte[] data = new byte[1024];
         try (FileInputStream fis = new FileInputStream(filePath)) {
